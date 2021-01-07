@@ -22,7 +22,7 @@ class CountdownTimer {
 
 
 function updateClock(time) {
-  const days = pad1(Math.floor(time / (1000 * 60 * 60 * 24)));
+  const days = padDays(Math.floor(time / (1000 * 60 * 60 * 24)));
   const hours = pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
   const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
   const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
@@ -36,13 +36,12 @@ function pad(value) {
   return String(value).padStart(2, '0');
 }
 
-function pad1(value) {
+function padDays(value) {
   return String(value).padStart(value.length + 1, '0');
 }
 
-const test = new CountdownTimer({
+const initTimer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jan 03, 2021'),
+  targetDate: new Date('Jan 21, 2021'),
 });
-
-test.start();
+initTimer.start();
